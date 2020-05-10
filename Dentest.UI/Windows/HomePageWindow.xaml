@@ -1,0 +1,229 @@
+﻿<Window x:Class="Dentest.UI.Windows.HomePageWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Dentest.UI.Windows"
+        mc:Ignorable="d"
+        Height="700"
+        Width="1300"
+        Title="Dentist"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        ResizeMode="NoResize"
+        Background="#02111C">
+    <Grid>
+
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="15*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0"
+              Background="#02111C" Margin="0">
+
+            <StackPanel HorizontalAlignment="Right"
+                        Orientation="Horizontal">
+
+                <Button  Width="20"
+                         Height="20"
+                         Margin="0 0 20 0"
+                         Click="Button_Click_5"
+                         ToolTip="Profil">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Image Source="..\Images/user.png"></Image>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+                <Button  Width="20"
+                         Height="20"
+                         Margin="0 0 20 0"
+                         Click="Button_Click_6"
+                         ToolTip="çıkış">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Image Source="..\Images/arrow.png"></Image>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+
+            </StackPanel>
+
+        </Grid>
+
+        <Grid Grid.Row="1"
+              Margin="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="15*" />
+            </Grid.ColumnDefinitions>
+
+
+
+            <Grid Grid.Column="0"
+                  Background="#02111C"
+                  Margin="0">
+
+                <StackPanel>
+
+                    <Image  Width="40"
+                            Height="40"
+                            VerticalAlignment="Top"
+                            Source="..\Images/logo.png">
+                    </Image>
+
+                    <Grid Height="500" Margin="0 80 0 10">
+
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <!--<RowDefinition Height="*"></RowDefinition>-->
+                        </Grid.RowDefinitions>
+
+                        <Button  Width="30"
+                                 Height="30"
+                                 Grid.Row="0"
+                                 Click="Button_Click"
+                                 Name="btnDoc">
+                            <Button.Template>
+                                <ControlTemplate>
+                                    <Rectangle 
+                                    ToolTip="Doktor"
+                                    x:Name="doctorColor">
+                            <Rectangle.Fill>
+                                <SolidColorBrush Color="Gray" 
+                                                />
+                            </Rectangle.Fill>
+                            <Rectangle.OpacityMask>
+                                <ImageBrush ImageSource="..\Images/doctor.png" />
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                                </ControlTemplate>
+                            </Button.Template>
+                            
+                        </Button>
+
+                        <Button  Width="30"
+                                 Height="30"
+                                 Grid.Row="1"
+                                 Click="Button_Click_1"
+                                 Name="btnPacc">
+                            <Button.Template>
+                                <ControlTemplate>
+                                    <Rectangle ToolTip="Hasta"
+                                               Name="colorPac">
+                                        <Rectangle.Fill>
+                                            <SolidColorBrush Color="Gray"
+                                                             x:Name="paccientColor"/>
+                                        </Rectangle.Fill>
+                                        <Rectangle.OpacityMask>
+                                            <ImageBrush ImageSource="..\Images/healthcare.png" />
+                                        </Rectangle.OpacityMask>
+                                    </Rectangle>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+
+                        <Button  Width="30"
+                                 Height="30"
+                                 Grid.Row="2"
+                                 Click="Button_Click_2"
+                                 Name="btnList">
+                            <Button.Template>
+                                <ControlTemplate>
+                                    <Rectangle ToolTip="Randevu"
+                                               x:Name="listColor">
+                                        <Rectangle.Fill>
+                                            <SolidColorBrush Color="Gray"
+                                                            />
+                                        </Rectangle.Fill>
+                                        <Rectangle.OpacityMask>
+                                            <ImageBrush ImageSource="..\Images/medical.png" />
+                                        </Rectangle.OpacityMask>
+                                    </Rectangle>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+
+                        <Button  Width="30"
+                                 Height="30"
+                                 Grid.Row="3"
+                                 Click="Button_Click_3"
+                                 Name="btnCal">
+                            <Button.Template>
+                                <ControlTemplate>
+                                    <Rectangle ToolTip="Takvim"
+                                               Name="calColor">
+                                        <Rectangle.Fill>
+                                            <SolidColorBrush Color="Gray"
+                                                             x:Name="calenderColor"/>
+                                        </Rectangle.Fill>
+                                        <Rectangle.OpacityMask>
+                                            <ImageBrush ImageSource="..\Images/interface.png" />
+                                        </Rectangle.OpacityMask>
+                                    </Rectangle>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+
+                        <Button  Width="30"
+                                 Height="30"
+                                 Grid.Row="4"
+                                 Click="Button_Click_4"
+                                 Name="btnMoney"
+                                 Visibility="Collapsed">
+                            <Button.Template>
+                                <ControlTemplate>
+                                    <Rectangle ToolTip="Kazanç"
+                                               x:Name="moneyColor">
+                                        <Rectangle.Fill>
+                                            <SolidColorBrush Color="Gray"/>
+                                        </Rectangle.Fill>
+                                        <Rectangle.OpacityMask>
+                                            <ImageBrush ImageSource="..\Images/business.png" />
+                                        </Rectangle.OpacityMask>
+                                    </Rectangle>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+
+                    </Grid>
+                
+                </StackPanel>
+
+            </Grid>
+            
+            
+            
+
+            <Grid Grid.Column="1"
+                  Margin="0"
+                  Background="{DynamicResource MaterialDesignPaper}">
+
+                <materialDesign:DialogHost Identifier="RootDialog">
+                    <Frame x:Name="mainFrame" NavigationUIVisibility="Hidden">
+
+
+                    </Frame>
+                </materialDesign:DialogHost>
+
+            </Grid>
+
+        </Grid>
+
+    </Grid>
+
+
+</Window>
