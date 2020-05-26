@@ -38,7 +38,8 @@ namespace Dentest.UI.Pages
         {
             InitializeComponent();
 
-            List<string> months = new List<string> { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
+            List<string> months = new List<string> { "Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", 
+                "Eylül", "Ekim", "Kasım", "Aralık" };
             cboMonth.ItemsSource = months;
 
             for (int i = -50; i < 50; i++)
