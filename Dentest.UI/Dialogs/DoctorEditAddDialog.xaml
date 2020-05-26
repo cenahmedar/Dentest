@@ -104,64 +104,9 @@
 
                     <DatePicker Width="350"
                                 materialDesign:HintAssist.Hint="Doğum Tarihi"
-                                Style="{StaticResource MaterialDesignFilledDatePicker}" 
+                                Style="{StaticResource MaterialDesignFilledDatePicker}"
                                 Margin="20 0 0 0"
-                                Name="pickbirthDay"/>
-
-
-                    <!--<StackPanel Orientation="Vertical"
-                                Width="350"
-                                Margin="20 0 0 0">
-
-                        <TextBlock Foreground="Gray"> Doğum Tarihi</TextBlock>
-                        <StackPanel  Orientation="Horizontal" Height="40">
-
-                            <Button Style="{StaticResource MaterialDesignRaisedAccentButton}">
-                                <materialDesign:PackIcon Kind="CalendarWeekend"
-                                                         Height="24"
-                                                         Width="24"
-                                                         Foreground="White" />
-                            </Button>
-
-                            <Button Content="dd-MM-yyyy"
-                                    Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
-                                    materialDesign:DialogHost.DialogClosingAttached="SecCalendarDialogClosingEventHandler"
-                                    Style="{StaticResource MaterialDesignOutlinedButton}"
-                                    Name="btnSecDate"
-                                    Width="293"
-                                    Background="White">
-                                <Button.CommandParameter>
-                                    <Grid>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto" />
-                                            <RowDefinition Height="Auto" />
-                                        </Grid.RowDefinitions>
-                                        <Calendar Margin="-1 -4 -1 0"
-                                                  Name="LocaleDatePickerSec" />
-                                        <StackPanel Grid.Row="1"
-                                                    Margin="8"
-                                                    HorizontalAlignment="Right"
-                                                    Orientation="Horizontal">
-                                            <Button Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
-                                                    CommandParameter="0"
-                                                    Style="{DynamicResource MaterialDesignFlatButton}">
-                                                IPTAL
-                                            </Button>
-                                            <Button Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
-                                                    CommandParameter="1"
-                                                    Style="{DynamicResource MaterialDesignFlatButton}">
-                                                TAMAM
-                                            </Button>
-                                        </StackPanel>
-                                    </Grid>
-                                </Button.CommandParameter>
-                            </Button>
-
-                        </StackPanel>
-                    </StackPanel>-->
-                    
-                    
-
+                                Name="pickbirthDay" />
 
                 </StackPanel>
 

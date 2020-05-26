@@ -14,6 +14,12 @@ namespace Dentest.UI.DataBase
     
     public partial class Doctor
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Doctor()
+        {
+            this.Appointments = new HashSet<Appointment>();
+        }
+    
         public int ID { get; set; }
         public string NAME { get; set; }
         public string SURNAME { get; set; }
@@ -22,5 +28,8 @@ namespace Dentest.UI.DataBase
         public string PERSONELID { get; set; }
         public bool ISDELETE { get; set; }
         public System.DateTime BIRTHDAY { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Appointment> Appointments { get; set; }
     }
 }

@@ -130,5 +130,10 @@ namespace Dentest.UI.Windows
             this.Close();
             main.Show();
         }
+
+        private void Button_Click_7(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

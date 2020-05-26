@@ -108,12 +108,12 @@
 
                                     <DataTemplate>
 
-                                        <Button 
-                                                Style="{StaticResource MaterialDesignRaisedAccentButton}"
+                                        <Button Style="{StaticResource MaterialDesignRaisedAccentButton}"
                                                 Background="#f44336"
                                                 Content="{materialDesign:PackIcon DeleteEmpty}"
-                                            Name="Delete"
-                                            Click="Delete_Click">
+                                                Name="Delete"
+                                                Click="Delete_Click"
+                                                ToolTip="Sil">
                                             <Button.Resources>
                                                 <SolidColorBrush x:Key="SecondaryAccentBrush"
                                                                  Color="#f44336" />
@@ -132,8 +132,8 @@
                                     <DataTemplate>
                                         <Button   x:Name="Edit"
                                                   Content="{materialDesign:PackIcon ModeEdit}"
-                                                  ToolTip="Icon" 
-                                                  Click="Edit_Click"/>
+                                                  ToolTip="Düzenle"
+                                                  Click="Edit_Click" />
                                     </DataTemplate>
 
                                 </DataGridTemplateColumn.CellTemplate>

@@ -61,6 +61,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DataBase\Appointment.cs">
+      <DependentUpon>DentistModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataBase\DentistModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -85,14 +88,23 @@
     <Compile Include="DataBase\User.cs">
       <DependentUpon>DentistModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataBase\VW_Appointment.cs">
+      <DependentUpon>DentistModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\AppointmentEditAddDialog.xaml.cs">
+      <DependentUpon>AppointmentEditAddDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\DoctorEditAddDialog.xaml.cs">
       <DependentUpon>DoctorEditAddDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dialogs\PatientEditAddDialog.xaml.cs">
       <DependentUpon>PatientEditAddDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\BoolToVisibilityConverter.cs" />
     <Compile Include="Helpers\MContains.cs" />
+    <Compile Include="Helpers\NotBoolToVisibilityConverter.cs" />
     <Compile Include="Helpers\Shared.cs" />
+    <Compile Include="Helpers\SimpleModel.cs" />
     <Compile Include="Pages\CalPage.xaml.cs">
       <DependentUpon>CalPage.xaml</DependentUpon>
     </Compile>
@@ -160,6 +172,10 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Dialogs\AppointmentEditAddDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Dialogs\DoctorEditAddDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -201,7 +217,12 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\cenah\Desktop\JarlooCalendar\Jarloo.Calendar\Jarloo.Calendar\Jarloo.Calendar.csproj">
+      <Project>{31c3b4a7-504b-4eff-bacc-c8f2ffe5af6f}</Project>
+      <Name>Jarloo.Calendar</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\logo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -218,6 +239,7 @@
       <DependentUpon>DentistModel.edmx</DependentUpon>
       <LastGenOutput>DentistModel.cs</LastGenOutput>
     </Content>
+    <Resource Include="Images\cross.png" />
     <Resource Include="Images\arrow.png" />
     <Resource Include="Images\user.png" />
     <Resource Include="Images\business.png" />

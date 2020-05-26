@@ -83,6 +83,7 @@ namespace Dentest.UI.Pages
                 if (patients == null || !patients.Any())
                 {
                     MessageBox.Show("Veri Buluamadı", "");
+                    mDataGrid.ItemsSource = null;
                     ProgressOf();
                     return;
                 }

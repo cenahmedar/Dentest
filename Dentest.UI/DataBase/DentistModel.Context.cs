@@ -25,8 +25,10 @@ namespace Dentest.UI.DataBase
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Appointment> Appointments { get; set; }
         public virtual DbSet<Doctor> Doctors { get; set; }
         public virtual DbSet<Patient> Patients { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<VW_Appointment> VW_Appointment { get; set; }
     }
 }

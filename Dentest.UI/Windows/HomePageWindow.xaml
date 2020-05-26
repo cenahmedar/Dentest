@@ -15,7 +15,8 @@
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        ResizeMode="NoResize"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
         Background="#02111C">
     <Grid>
 
@@ -47,7 +48,7 @@
                          Height="20"
                          Margin="0 0 20 0"
                          Click="Button_Click_6"
-                         ToolTip="çıkış">
+                         ToolTip="Çıkış">
                     <Button.Template>
                         <ControlTemplate>
                             <Image Source="..\Images/arrow.png"></Image>
@@ -55,6 +56,18 @@
                     </Button.Template>
                 </Button>
 
+
+                <Button  Width="20"
+                         Height="20"
+                         Margin="0 0 20 0"
+                         ToolTip="Kapat"
+                         Click="Button_Click_7">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Image Source="..\Images/cross.png"></Image>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
 
             </StackPanel>
 
@@ -89,7 +102,7 @@
                             <RowDefinition Height="*"></RowDefinition>
                             <RowDefinition Height="*"></RowDefinition>
                             <RowDefinition Height="*"></RowDefinition>
-                            <!--<RowDefinition Height="*"></RowDefinition>-->
+                            <RowDefinition Height="*"></RowDefinition>
                         </Grid.RowDefinitions>
 
                         <Button  Width="30"
@@ -182,8 +195,7 @@
                                  Height="30"
                                  Grid.Row="4"
                                  Click="Button_Click_4"
-                                 Name="btnMoney"
-                                 Visibility="Collapsed">
+                                 Name="btnMoney">
                             <Button.Template>
                                 <ControlTemplate>
                                     <Rectangle ToolTip="Kazanç"

@@ -5,9 +5,13 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="5a916e9714574654be952e41973a037c" Name="Diagram1">
-        <EntityTypeShape EntityType="DentistDbModel.Doctor" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="DentistDbModel.Patient" Width="1.5" PointX="2.75" PointY="0.75" />
-        <EntityTypeShape EntityType="DentistDbModel.User" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DentistDbModel.Appointment" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="DentistDbModel.Doctor" Width="1.5" PointX="0.75" PointY="1.25" />
+        <EntityTypeShape EntityType="DentistDbModel.Patient" Width="1.5" PointX="0.75" PointY="5.125" />
+        <EntityTypeShape EntityType="DentistDbModel.User" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DentistDbModel.VW_Appointment" Width="1.5" PointX="2.75" PointY="5.75" />
+        <AssociationConnector Association="DentistDbModel.FK_Appointment_Doctor" />
+        <AssociationConnector Association="DentistDbModel.FK_Appointment_Patient" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

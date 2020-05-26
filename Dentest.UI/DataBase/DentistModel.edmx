@@ -5,6 +5,21 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="DentistDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Appointment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DOCTORID" Type="int" Nullable="false" />
+          <Property Name="PATIENTID" Type="int" Nullable="false" />
+          <Property Name="DATE" Type="date" Nullable="false" />
+          <Property Name="HOUR" Type="int" Nullable="false" />
+          <Property Name="PRICE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ISCAME" Type="bit" Nullable="false" />
+          <Property Name="ISPAID" Type="bit" Nullable="false" />
+          <Property Name="TYPE" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="Doctor">
           <Key>
             <PropertyRef Name="ID" />
@@ -44,20 +59,123 @@
           <Property Name="USERNAME" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="PASSWORD" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DentistDb.dbo.VW_Appointment' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VW_Appointment">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="DOCTORID" />
+            <PropertyRef Name="PATIENTID" />
+            <PropertyRef Name="DATE" />
+            <PropertyRef Name="HOUR" />
+            <PropertyRef Name="PRICE" />
+            <PropertyRef Name="ISCAME" />
+            <PropertyRef Name="ISPAID" />
+            <PropertyRef Name="TYPE" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="DOCTORID" Type="int" Nullable="false" />
+          <Property Name="PATIENTID" Type="int" Nullable="false" />
+          <Property Name="DATE" Type="date" Nullable="false" />
+          <Property Name="HOUR" Type="int" Nullable="false" />
+          <Property Name="PRICE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ISCAME" Type="bit" Nullable="false" />
+          <Property Name="ISPAID" Type="bit" Nullable="false" />
+          <Property Name="TYPE" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="nvarchar(max)" />
+          <Property Name="DOCTORFULLNAME" Type="nvarchar" MaxLength="101" />
+          <Property Name="PATIENTFULLNAME" Type="nvarchar" MaxLength="101" />
+        </EntityType>
+        <Association Name="FK_Appointment_Doctor">
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="1" />
+          <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctor">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Appointment">
+              <PropertyRef Name="DOCTORID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Appointment_Patient">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+          <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Appointment">
+              <PropertyRef Name="PATIENTID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="DentistDbModelStoreContainer">
+          <EntitySet Name="Appointment" EntityType="Self.Appointment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Doctor" EntityType="Self.Doctor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Patient" EntityType="Self.Patient" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VW_Appointment" EntityType="Self.VW_Appointment" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VW_Appointment].[ID] AS [ID], 
+    [VW_Appointment].[DOCTORID] AS [DOCTORID], 
+    [VW_Appointment].[PATIENTID] AS [PATIENTID], 
+    [VW_Appointment].[DATE] AS [DATE], 
+    [VW_Appointment].[HOUR] AS [HOUR], 
+    [VW_Appointment].[PRICE] AS [PRICE], 
+    [VW_Appointment].[ISCAME] AS [ISCAME], 
+    [VW_Appointment].[ISPAID] AS [ISPAID], 
+    [VW_Appointment].[TYPE] AS [TYPE], 
+    [VW_Appointment].[DESCRIPTION] AS [DESCRIPTION], 
+    [VW_Appointment].[DOCTORFULLNAME] AS [DOCTORFULLNAME], 
+    [VW_Appointment].[PATIENTFULLNAME] AS [PATIENTFULLNAME]
+    FROM [dbo].[VW_Appointment] AS [VW_Appointment]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Appointment_Doctor" Association="Self.FK_Appointment_Doctor">
+            <End Role="Doctor" EntitySet="Doctor" />
+            <End Role="Appointment" EntitySet="Appointment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Appointment_Patient" Association="Self.FK_Appointment_Patient">
+            <End Role="Patient" EntitySet="Patient" />
+            <End Role="Appointment" EntitySet="Appointment" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DentistDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="DentistDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Appointments" EntityType="DentistDbModel.Appointment" />
           <EntitySet Name="Doctors" EntityType="DentistDbModel.Doctor" />
           <EntitySet Name="Patients" EntityType="DentistDbModel.Patient" />
           <EntitySet Name="Users" EntityType="DentistDbModel.User" />
+          <EntitySet Name="VW_Appointment" EntityType="DentistDbModel.VW_Appointment" />
+          <AssociationSet Name="FK_Appointment_Doctor" Association="DentistDbModel.FK_Appointment_Doctor">
+            <End Role="Doctor" EntitySet="Doctors" />
+            <End Role="Appointment" EntitySet="Appointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Appointment_Patient" Association="DentistDbModel.FK_Appointment_Patient">
+            <End Role="Patient" EntitySet="Patients" />
+            <End Role="Appointment" EntitySet="Appointments" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Appointment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DOCTORID" Type="Int32" Nullable="false" />
+          <Property Name="PATIENTID" Type="Int32" Nullable="false" />
+          <Property Name="DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="HOUR" Type="Int32" Nullable="false" />
+          <Property Name="PRICE" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="ISCAME" Type="Boolean" Nullable="false" />
+          <Property Name="ISPAID" Type="Boolean" Nullable="false" />
+          <Property Name="TYPE" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Doctor" Relationship="DentistDbModel.FK_Appointment_Doctor" FromRole="Appointment" ToRole="Doctor" />
+          <NavigationProperty Name="Patient" Relationship="DentistDbModel.FK_Appointment_Patient" FromRole="Appointment" ToRole="Patient" />
+        </EntityType>
         <EntityType Name="Doctor">
           <Key>
             <PropertyRef Name="ID" />
@@ -70,6 +188,7 @@
           <Property Name="PERSONELID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="ISDELETE" Type="Boolean" Nullable="false" />
           <Property Name="BIRTHDAY" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Appointments" Relationship="DentistDbModel.FK_Appointment_Doctor" FromRole="Doctor" ToRole="Appointment" />
         </EntityType>
         <EntityType Name="Patient">
           <Key>
@@ -85,6 +204,7 @@
           <Property Name="BIRTHDAY" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="GENDER" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="INSURANCENO" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Appointments" Relationship="DentistDbModel.FK_Appointment_Patient" FromRole="Patient" ToRole="Appointment" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -97,12 +217,77 @@
           <Property Name="USERNAME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PASSWORD" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
-      </Schema>
+        <EntityType Name="VW_Appointment">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="DOCTORID" />
+            <PropertyRef Name="PATIENTID" />
+            <PropertyRef Name="DATE" />
+            <PropertyRef Name="HOUR" />
+            <PropertyRef Name="PRICE" />
+            <PropertyRef Name="ISCAME" />
+            <PropertyRef Name="ISPAID" />
+            <PropertyRef Name="TYPE" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="DOCTORID" Type="Int32" Nullable="false" />
+          <Property Name="PATIENTID" Type="Int32" Nullable="false" />
+          <Property Name="DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="HOUR" Type="Int32" Nullable="false" />
+          <Property Name="PRICE" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="ISCAME" Type="Boolean" Nullable="false" />
+          <Property Name="ISPAID" Type="Boolean" Nullable="false" />
+          <Property Name="TYPE" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DOCTORFULLNAME" Type="String" MaxLength="101" FixedLength="false" Unicode="true" />
+          <Property Name="PATIENTFULLNAME" Type="String" MaxLength="101" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_Appointment_Doctor">
+          <End Type="DentistDbModel.Doctor" Role="Doctor" Multiplicity="1" />
+          <End Type="DentistDbModel.Appointment" Role="Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctor">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Appointment">
+              <PropertyRef Name="DOCTORID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Appointment_Patient">
+          <End Type="DentistDbModel.Patient" Role="Patient" Multiplicity="1" />
+          <End Type="DentistDbModel.Appointment" Role="Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Appointment">
+              <PropertyRef Name="PATIENTID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="DentistDbModelStoreContainer" CdmEntityContainer="DentistDbEntities">
+          <EntitySetMapping Name="Appointments">
+            <EntityTypeMapping TypeName="DentistDbModel.Appointment">
+              <MappingFragment StoreEntitySet="Appointment">
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="TYPE" ColumnName="TYPE" />
+                <ScalarProperty Name="ISPAID" ColumnName="ISPAID" />
+                <ScalarProperty Name="ISCAME" ColumnName="ISCAME" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="HOUR" ColumnName="HOUR" />
+                <ScalarProperty Name="DATE" ColumnName="DATE" />
+                <ScalarProperty Name="PATIENTID" ColumnName="PATIENTID" />
+                <ScalarProperty Name="DOCTORID" ColumnName="DOCTORID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Doctors">
             <EntityTypeMapping TypeName="DentistDbModel.Doctor">
               <MappingFragment StoreEntitySet="Doctor">
@@ -141,6 +326,24 @@
                 <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
                 <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
                 <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VW_Appointment">
+            <EntityTypeMapping TypeName="DentistDbModel.VW_Appointment">
+              <MappingFragment StoreEntitySet="VW_Appointment">
+                <ScalarProperty Name="PATIENTFULLNAME" ColumnName="PATIENTFULLNAME" />
+                <ScalarProperty Name="DOCTORFULLNAME" ColumnName="DOCTORFULLNAME" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="TYPE" ColumnName="TYPE" />
+                <ScalarProperty Name="ISPAID" ColumnName="ISPAID" />
+                <ScalarProperty Name="ISCAME" ColumnName="ISCAME" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="HOUR" ColumnName="HOUR" />
+                <ScalarProperty Name="DATE" ColumnName="DATE" />
+                <ScalarProperty Name="PATIENTID" ColumnName="PATIENTID" />
+                <ScalarProperty Name="DOCTORID" ColumnName="DOCTORID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

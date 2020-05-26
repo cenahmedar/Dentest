@@ -16,8 +16,9 @@
       TextOptions.TextRenderingMode="Auto"
       Background="{DynamicResource MaterialDesignPaper}"
       FontFamily="{DynamicResource MaterialDesignFont}"
-      Name="mainWindow">
-    <!--<Grid>
+      Name="mainWindow"
+      xmlns:local1="clr-namespace:Dentest.UI.Helpers">
+    <Grid>
         <ProgressBar Style="{DynamicResource MaterialDesignCircularProgressBar}"
                      HorizontalAlignment="Center"
                      Margin="16"
@@ -53,6 +54,7 @@
                             Name="add"
                             Click="add_Click">Rendevo Ekle</Button>
 
+            
 
                 </StackPanel>
 
@@ -69,46 +71,125 @@
 
                         <DataGrid.Columns>
 
-                            <materialDesign:DataGridTextColumn Width="*"
+                            <materialDesign:DataGridTextColumn Width="1*"
                                                                IsReadOnly="True"
-                                                               Binding="{Binding NAME}"
-                                                               Header="Adı" />
-
-                            <materialDesign:DataGridTextColumn Width="*"
-                                                               IsReadOnly="True"
-                                                               Binding="{Binding SURNAME}"
-                                                               Header="SoyaAdı" />
-
-                            <materialDesign:DataGridTextColumn Width="*"
-                                                               IsReadOnly="True"
-                                                               Binding="{Binding PHONE}"
-                                                               Header="Telefon" />
-
-                            <materialDesign:DataGridTextColumn Width="*"
-                                                               IsReadOnly="True"
-                                                               Binding="{Binding PERSONELID}"
-                                                               Header="TC" />
-
-
-                            <materialDesign:DataGridTextColumn Width="1.2*"
-                                                               IsReadOnly="True"
-                                                               Binding="{Binding BIRTHDAY, StringFormat=\{0:dd.MM.yyyy\}}"
-                                                               Header="Doğum Tarihi" />
+                                                               Binding="{Binding PATIENTFULLNAME}"
+                                                               Header="Hasta Adı" />
 
                             <materialDesign:DataGridTextColumn Width="1*"
                                                                IsReadOnly="True"
-                                                               Binding="{Binding GENDER}"
-                                                               Header="Cinsiyet" />
+                                                               Binding="{Binding DOCTORFULLNAME}"
+                                                               Header="Doktor Adı" />
 
                             <materialDesign:DataGridTextColumn Width="1*"
                                                                IsReadOnly="True"
-                                                               Binding="{Binding INSURANCENO}"
-                                                               Header="Sigorta No." />
+                                                               Binding="{Binding DATE, StringFormat=\{0:dd.MM.yyyy\}}"
+                                                               Header="Tarih" />
 
-                            <materialDesign:DataGridTextColumn Width="2*"
+                            <materialDesign:DataGridTextColumn Width="1*"
                                                                IsReadOnly="True"
-                                                               Binding="{Binding ADRESS}"
-                                                               Header="Adres" />
+                                                               Binding="{Binding HOUR}"
+                                                               Header="Saat" />
+
+
+                            <materialDesign:DataGridTextColumn Width="1*"
+                                                               IsReadOnly="True"
+                                                               Binding="{Binding PRICE}"
+                                                               Header="Fiyat" />
+
+                            <materialDesign:DataGridTextColumn Width="1*"
+                                                               IsReadOnly="True"
+                                                               Binding="{Binding TYPE}"
+                                                               Header="İşlem" />
+
+                            <materialDesign:DataGridTextColumn Width="1*"
+                                                               IsReadOnly="True"
+                                                               Binding="{Binding DESCRIPTION}"
+                                                               Header="Açıklama" />
+
+
+                            <DataGridTemplateColumn  Width="*">
+                                <DataGridTemplateColumn.CellTemplate>
+
+                                    <DataTemplate>
+                                        <ContentControl>
+                                            <ContentControl.Resources>
+
+                                                <local1:NotBoolToVisibilityConverter x:Key="NotBoolToVisibilityConverter" />
+                                                <local1:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+                                            </ContentControl.Resources>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Button Content="BEKLEMEDE"
+                                                        CommandParameter="{Binding ISCAME}"
+                                                        Visibility="{Binding ISCAME, Converter={StaticResource NotBoolToVisibilityConverter}}"
+                                                        Style="{StaticResource MaterialDesignFlatButton}"
+                                                        Height="25"
+                                                        Cursor="None"
+                                                        Foreground="Red" />
+                                                <Button Content="GELDİ"
+                                                        CommandParameter="{Binding ISCAME}"
+                                                        Visibility="{Binding ISCAME, Converter={StaticResource BoolToVisibilityConverter}}"
+                                                        Height="25"
+                                                        Cursor="None"
+                                                        Style="{StaticResource MaterialDesignFlatButton}"
+                                                        Foreground="Green" />
+                                            </StackPanel>
+                                        </ContentControl>
+
+                                    </DataTemplate>
+
+                                </DataGridTemplateColumn.CellTemplate>
+
+                                <DataGridTemplateColumn.HeaderTemplate>
+                                    <DataTemplate>
+                                        <Label HorizontalAlignment="Center"
+                                               Content="Durumu"></Label>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.HeaderTemplate>
+                            </DataGridTemplateColumn>
+
+                            
+                   
+
+                            <DataGridTemplateColumn  Width="*">
+                                <DataGridTemplateColumn.CellTemplate>
+
+                                    <DataTemplate>
+                                        <ContentControl>
+                                            <ContentControl.Resources>
+
+                                                <local1:NotBoolToVisibilityConverter x:Key="NotBoolToVisibilityConverter" />
+                                                <local1:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+                                            </ContentControl.Resources>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Button Content="ÖDENMEDİ"
+                                                        CommandParameter="{Binding ISPAID}"
+                                                        Visibility="{Binding ISPAID, Converter={StaticResource NotBoolToVisibilityConverter}}"
+                                                        Style="{StaticResource MaterialDesignFlatButton}"
+                                                        Height="25"
+                                                        Cursor="None"
+                                                        Foreground="Red" />
+                                                <Button Content="ÖDENDİ"
+                                                        CommandParameter="{Binding ISPAID}"
+                                                        Visibility="{Binding ISPAID, Converter={StaticResource BoolToVisibilityConverter}}"
+                                                        Height="25"
+                                                        Cursor="None"
+                                                        Style="{StaticResource MaterialDesignFlatButton}"
+                                                        Foreground="Green" />
+                                            </StackPanel>
+                                        </ContentControl>
+
+                                    </DataTemplate>
+
+                                </DataGridTemplateColumn.CellTemplate>
+
+                                <DataGridTemplateColumn.HeaderTemplate>
+                                    <DataTemplate>
+                                        <Label HorizontalAlignment="Center"
+                                               Content="Ödeme"></Label>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.HeaderTemplate>
+                            </DataGridTemplateColumn>
 
 
                             <DataGridTemplateColumn  Width="0.7*">
@@ -121,7 +202,8 @@
                                                 Background="#f44336"
                                                 Content="{materialDesign:PackIcon DeleteEmpty}"
                                                 Name="Delete"
-                                                Click="Delete_Click">
+                                                Click="Delete_Click"
+                                                ToolTip="Sil">
                                             <Button.Resources>
                                                 <SolidColorBrush x:Key="SecondaryAccentBrush"
                                                                  Color="#f44336" />
@@ -140,7 +222,7 @@
                                     <DataTemplate>
                                         <Button   x:Name="Edit"
                                                   Content="{materialDesign:PackIcon ModeEdit}"
-                                                  ToolTip="Icon"
+                                                  ToolTip="Düzenle"
                                                   Click="Edit_Click" />
                                     </DataTemplate>
 
@@ -158,5 +240,5 @@
 
 
         </materialDesign:Card>
-    </Grid>-->
+    </Grid>
 </Page>

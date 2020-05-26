@@ -98,6 +98,10 @@ namespace Dentest.UI.Dialogs
             var tc = txTc.Text.Trim();
             var incNo = txSigorta.Text.Trim();
 
+            if((comboGender.SelectedItem)==null) {
+                MessageBox.Show("Lütfen Bütün Alanları Doldurunuz.", "");
+                return;
+            }
             var gender = ((ComboBoxItem)comboGender.SelectedItem).Content.ToString();
 
 
