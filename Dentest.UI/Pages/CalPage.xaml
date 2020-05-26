@@ -16,9 +16,18 @@
       TextOptions.TextRenderingMode="Auto"
       Background="{DynamicResource MaterialDesignPaper}"
       FontFamily="{DynamicResource MaterialDesignFont}"
-      xmlns:Jarloo="clr-namespace:Jarloo.Calendar;assembly=Jarloo.Calendar">
+      xmlns:Jarloo="clr-namespace:Jarloo.Calendar;assembly=Jarloo.Calendar"
+      Name="mainWindow">
 
     <Grid>
+        <ProgressBar Style="{DynamicResource MaterialDesignCircularProgressBar}"
+                     HorizontalAlignment="Center"
+                     Margin="16"
+                     IsIndeterminate="True"
+                     Value="0"
+                     Name="progressBar"
+                     Panel.ZIndex="1"
+                     Visibility="Hidden" />
         <materialDesign:Card Padding="32"
                              Margin="16">
 

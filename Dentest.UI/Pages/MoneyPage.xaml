@@ -15,17 +15,80 @@
       TextOptions.TextFormattingMode="Ideal"
       TextOptions.TextRenderingMode="Auto"
       Background="{DynamicResource MaterialDesignPaper}"
-      FontFamily="{DynamicResource MaterialDesignFont}">
-
+      FontFamily="{DynamicResource MaterialDesignFont}"
+      Name="mainWindow"
+      xmlns:local1="clr-namespace:Dentest.UI.Helpers">
     <Grid>
-        <materialDesign:Card Padding="32"
+        <ProgressBar Style="{DynamicResource MaterialDesignCircularProgressBar}"
+                     HorizontalAlignment="Center"
+                     Margin="16"
+                     IsIndeterminate="True"
+                     Value="0"
+                     Name="progressBar"
+                     Panel.ZIndex="1"
+                     Visibility="Hidden" />
+        <materialDesign:Card Padding="10"
                              Margin="16">
 
+            <StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+
+                    <TextBox Style="{StaticResource MaterialDesignFilledTextFieldTextBox}"
+                             VerticalAlignment="Top"
+                             AcceptsReturn="True"
+                             TextWrapping="Wrap"
+                             Width="395"
+                             materialDesign:HintAssist.Hint="HIZLI ARAMA"
+                             IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextFieldTextBoxEnabledComboBox}"
+                             Margin="5"
+                             Grid.Column="0"
+                             Grid.Row="1"
+                             KeyUp="textBox1_KeyUp"
+                             Name="txSearch"
+                             HorizontalAlignment="Left" />
+
+     
+                </StackPanel>
+
+                <Grid>
+                    <DataGrid Name="mDataGrid"
+                              Margin="0 8 0 0"
+                              CanUserSortColumns="True"
+                              CanUserAddRows="False"
+                              AutoGenerateColumns="False"
+                              materialDesign:DataGridAssist.CellPadding="13 8 8 8"
+                              materialDesign:DataGridAssist.ColumnHeaderPadding="8"
+                              Height="500">
+
+
+                        <DataGrid.Columns>
+
+                            <materialDesign:DataGridTextColumn Width="1*"
+                                                               IsReadOnly="True"
+                                                               Binding="{Binding PATIENTFULLNAME}"
+                                                               Header="Hasta Adı" />
+
+                            <materialDesign:DataGridTextColumn Width="1*"
+                                                               IsReadOnly="True"
+                                                               Binding="{Binding DOCTORFULLNAME}"
+                                                               Header="Doktor Adı" />
+
+                            <materialDesign:DataGridTextColumn Width="1*"
+                                                               IsReadOnly="True"
+                                                               Binding="{Binding PRICE}"
+                                                               Header="Fiyat" />
+
+              
+                
+                        </DataGrid.Columns>
+
+                    </DataGrid>
+                </Grid>
 
 
 
-
-
+            </StackPanel>
 
 
         </materialDesign:Card>

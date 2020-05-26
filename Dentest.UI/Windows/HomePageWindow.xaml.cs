@@ -119,7 +119,20 @@ namespace Dentest.UI.Windows
         //profile
         private void Button_Click_5(object sender, RoutedEventArgs e)
         {
+            var docColor = btnDoc.Template.FindName("doctorColor", btnDoc) as Rectangle;
+            var colorPac = btnPacc.Template.FindName("colorPac", btnPacc) as Rectangle;
+            var listColor = btnList.Template.FindName("listColor", btnList) as Rectangle;
+            var calColor = btnCal.Template.FindName("calColor", btnCal) as Rectangle;
+            var moneyColor = btnMoney.Template.FindName("moneyColor", btnMoney) as Rectangle;
 
+
+            docColor.Fill = Brushes.Gray;
+            colorPac.Fill = Brushes.Gray;
+            listColor.Fill = Brushes.Gray;
+            calColor.Fill = Brushes.Gray;
+            moneyColor.Fill = Brushes.Gray;
+
+            mainFrame.NavigationService.Navigate(new ProfilePage());
         }
 
         //logout

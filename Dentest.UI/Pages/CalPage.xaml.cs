@@ -22,6 +22,18 @@ namespace Dentest.UI.Pages
     /// </summary>
     public partial class CalPage : Page
     {
+        private void ProgressOn()
+        {
+            mainWindow.IsEnabled = false;
+            progressBar.Visibility = Visibility.Visible;
+        }
+
+        private void ProgressOf()
+        {
+            mainWindow.IsEnabled = true;
+            progressBar.Visibility = Visibility.Hidden;
+        }
+
         public CalPage()
         {
             InitializeComponent();
@@ -69,6 +81,7 @@ namespace Dentest.UI.Pages
 
         private void getList()
         {
+            ProgressOn();
             var dates = Calendar.Days.Select(x => x.Date).ToList();
             using (var db = new DentistDbEntities())
             {
@@ -82,6 +95,8 @@ namespace Dentest.UI.Pages
                         : Calendar.Days.FirstOrDefault(x => x.Date == item.DATE).Notes + " - "+ item.PATIENTFULLNAME;
                 }
             }
+
+            ProgressOf();
            
         }
     }
