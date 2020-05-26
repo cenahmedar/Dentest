@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DentistDbModelStoreContainer" CdmEntityContainer="DentistDbEntities">
+    <EntitySetMapping Name="Appointments">
+      <EntityTypeMapping TypeName="DentistDbModel.Appointment">
+        <MappingFragment StoreEntitySet="Appointment">
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="TYPE" ColumnName="TYPE" />
+          <ScalarProperty Name="ISPAID" ColumnName="ISPAID" />
+          <ScalarProperty Name="ISCAME" ColumnName="ISCAME" />
+          <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+          <ScalarProperty Name="HOUR" ColumnName="HOUR" />
+          <ScalarProperty Name="DATE" ColumnName="DATE" />
+          <ScalarProperty Name="PATIENTID" ColumnName="PATIENTID" />
+          <ScalarProperty Name="DOCTORID" ColumnName="DOCTORID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Doctors">
+      <EntityTypeMapping TypeName="DentistDbModel.Doctor">
+        <MappingFragment StoreEntitySet="Doctor">
+          <ScalarProperty Name="BIRTHDAY" ColumnName="BIRTHDAY" />
+          <ScalarProperty Name="ISDELETE" ColumnName="ISDELETE" />
+          <ScalarProperty Name="PERSONELID" ColumnName="PERSONELID" />
+          <ScalarProperty Name="ADRESS" ColumnName="ADRESS" />
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+          <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Patients">
+      <EntityTypeMapping TypeName="DentistDbModel.Patient">
+        <MappingFragment StoreEntitySet="Patient">
+          <ScalarProperty Name="INSURANCENO" ColumnName="INSURANCENO" />
+          <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+          <ScalarProperty Name="BIRTHDAY" ColumnName="BIRTHDAY" />
+          <ScalarProperty Name="ISDELETE" ColumnName="ISDELETE" />
+          <ScalarProperty Name="PERSONELID" ColumnName="PERSONELID" />
+          <ScalarProperty Name="ADRESS" ColumnName="ADRESS" />
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+          <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="DentistDbModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+          <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VW_Appointment">
+      <EntityTypeMapping TypeName="DentistDbModel.VW_Appointment">
+        <MappingFragment StoreEntitySet="VW_Appointment">
+          <ScalarProperty Name="PATIENTFULLNAME" ColumnName="PATIENTFULLNAME" />
+          <ScalarProperty Name="DOCTORFULLNAME" ColumnName="DOCTORFULLNAME" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="TYPE" ColumnName="TYPE" />
+          <ScalarProperty Name="ISPAID" ColumnName="ISPAID" />
+          <ScalarProperty Name="ISCAME" ColumnName="ISCAME" />
+          <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+          <ScalarProperty Name="HOUR" ColumnName="HOUR" />
+          <ScalarProperty Name="DATE" ColumnName="DATE" />
+          <ScalarProperty Name="PATIENTID" ColumnName="PATIENTID" />
+          <ScalarProperty Name="DOCTORID" ColumnName="DOCTORID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

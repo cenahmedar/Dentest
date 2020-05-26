@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "JgpfI+RGMDoTEseTMxap8EPCwYxb+ys+CVXiUmQm8l+r4v9m3QobVez/JrXByl8O5lARptTFhKFFBX8BUvcJuQ==",
+  "success": true,
+  "projectFilePath": "D:\\MyAndroidAdv\\dentest\\Dentest\\Dentest.UI\\Dentest.UI.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\cenah\\.nuget\\packages\\entityframework\\6.2.0\\entityframework.6.2.0.nupkg.sha512",
+    "C:\\Users\\cenah\\.nuget\\packages\\materialdesigncolors\\1.2.4\\materialdesigncolors.1.2.4.nupkg.sha512",
+    "C:\\Users\\cenah\\.nuget\\packages\\materialdesignthemes\\3.1.1\\materialdesignthemes.3.1.1.nupkg.sha512"
+  ],
+  "logs": []
+}

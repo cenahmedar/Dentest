@@ -1,0 +1,76 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\MyAndroidAdv\\dentest\\Dentest\\Dentest.UI\\Dentest.UI.csproj": {}
+  },
+  "projects": {
+    "D:\\MyAndroidAdv\\dentest\\Dentest\\Dentest.UI\\Dentest.UI.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\MyAndroidAdv\\dentest\\Dentest\\Dentest.UI\\Dentest.UI.csproj",
+        "projectName": "Dentest.UI",
+        "projectPath": "D:\\MyAndroidAdv\\dentest\\Dentest\\Dentest.UI\\Dentest.UI.csproj",
+        "packagesPath": "C:\\Users\\cenah\\.nuget\\packages\\",
+        "outputPath": "D:\\MyAndroidAdv\\dentest\\Dentest\\Dentest.UI\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "configFilePaths": [
+          "C:\\Users\\cenah\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net472"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net472": {
+            "projectReferences": {
+              "D:\\MyAndroidAdv\\dentest\\Dentest\\Jarloo.Calendar\\Jarloo.Calendar.csproj": {
+                "projectPath": "D:\\MyAndroidAdv\\dentest\\Dentest\\Jarloo.Calendar\\Jarloo.Calendar.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {
+          "dependencies": {
+            "EntityFramework": {
+              "target": "Package",
+              "version": "[6.2.0, )"
+            },
+            "MaterialDesignThemes": {
+              "target": "Package",
+              "version": "[3.1.1, )"
+            }
+          }
+        }
+      },
+      "runtimes": {
+        "win": {
+          "#import": []
+        },
+        "win-x64": {
+          "#import": []
+        },
+        "win-x86": {
+          "#import": []
+        }
+      }
+    },
+    "D:\\MyAndroidAdv\\dentest\\Dentest\\Jarloo.Calendar\\Jarloo.Calendar.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\MyAndroidAdv\\dentest\\Dentest\\Jarloo.Calendar\\Jarloo.Calendar.csproj",
+        "projectName": "Jarloo.Calendar",
+        "projectPath": "D:\\MyAndroidAdv\\dentest\\Dentest\\Jarloo.Calendar\\Jarloo.Calendar.csproj"
+      },
+      "frameworks": {
+        "net40": {}
+      }
+    }
+  }
+}

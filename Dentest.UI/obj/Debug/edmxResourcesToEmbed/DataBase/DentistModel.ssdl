@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DentistDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Appointment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DOCTORID" Type="int" Nullable="false" />
+    <Property Name="PATIENTID" Type="int" Nullable="false" />
+    <Property Name="DATE" Type="date" Nullable="false" />
+    <Property Name="HOUR" Type="int" Nullable="false" />
+    <Property Name="PRICE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="ISCAME" Type="bit" Nullable="false" />
+    <Property Name="ISPAID" Type="bit" Nullable="false" />
+    <Property Name="TYPE" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Doctor">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SURNAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PHONE" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ADRESS" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="PERSONELID" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="ISDELETE" Type="bit" Nullable="false" />
+    <Property Name="BIRTHDAY" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Patient">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SURNAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PHONE" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ADRESS" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="PERSONELID" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="ISDELETE" Type="bit" Nullable="false" />
+    <Property Name="BIRTHDAY" Type="date" Nullable="false" />
+    <Property Name="GENDER" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="INSURANCENO" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SURNAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="EMAIL" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="USERNAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PASSWORD" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DentistDb.dbo.VW_Appointment' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="VW_Appointment">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="DOCTORID" />
+      <PropertyRef Name="PATIENTID" />
+      <PropertyRef Name="DATE" />
+      <PropertyRef Name="HOUR" />
+      <PropertyRef Name="PRICE" />
+      <PropertyRef Name="ISCAME" />
+      <PropertyRef Name="ISPAID" />
+      <PropertyRef Name="TYPE" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="DOCTORID" Type="int" Nullable="false" />
+    <Property Name="PATIENTID" Type="int" Nullable="false" />
+    <Property Name="DATE" Type="date" Nullable="false" />
+    <Property Name="HOUR" Type="int" Nullable="false" />
+    <Property Name="PRICE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="ISCAME" Type="bit" Nullable="false" />
+    <Property Name="ISPAID" Type="bit" Nullable="false" />
+    <Property Name="TYPE" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="nvarchar(max)" />
+    <Property Name="DOCTORFULLNAME" Type="nvarchar" MaxLength="101" />
+    <Property Name="PATIENTFULLNAME" Type="nvarchar" MaxLength="101" />
+  </EntityType>
+  <Association Name="FK_Appointment_Doctor">
+    <End Role="Doctor" Type="Self.Doctor" Multiplicity="1" />
+    <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctor">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Appointment">
+        <PropertyRef Name="DOCTORID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Appointment_Patient">
+    <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+    <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Appointment">
+        <PropertyRef Name="PATIENTID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DentistDbModelStoreContainer">
+    <EntitySet Name="Appointment" EntityType="Self.Appointment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Doctor" EntityType="Self.Doctor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Patient" EntityType="Self.Patient" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VW_Appointment" EntityType="Self.VW_Appointment" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VW_Appointment].[ID] AS [ID], 
+    [VW_Appointment].[DOCTORID] AS [DOCTORID], 
+    [VW_Appointment].[PATIENTID] AS [PATIENTID], 
+    [VW_Appointment].[DATE] AS [DATE], 
+    [VW_Appointment].[HOUR] AS [HOUR], 
+    [VW_Appointment].[PRICE] AS [PRICE], 
+    [VW_Appointment].[ISCAME] AS [ISCAME], 
+    [VW_Appointment].[ISPAID] AS [ISPAID], 
+    [VW_Appointment].[TYPE] AS [TYPE], 
+    [VW_Appointment].[DESCRIPTION] AS [DESCRIPTION], 
+    [VW_Appointment].[DOCTORFULLNAME] AS [DOCTORFULLNAME], 
+    [VW_Appointment].[PATIENTFULLNAME] AS [PATIENTFULLNAME]
+    FROM [dbo].[VW_Appointment] AS [VW_Appointment]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Appointment_Doctor" Association="Self.FK_Appointment_Doctor">
+      <End Role="Doctor" EntitySet="Doctor" />
+      <End Role="Appointment" EntitySet="Appointment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Appointment_Patient" Association="Self.FK_Appointment_Patient">
+      <End Role="Patient" EntitySet="Patient" />
+      <End Role="Appointment" EntitySet="Appointment" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
